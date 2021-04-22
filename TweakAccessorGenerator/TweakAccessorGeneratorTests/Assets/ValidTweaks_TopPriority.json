@@ -25,7 +25,9 @@
       "Description": "Answer to the Ultimate Question of Life, the Universe, and Everything",
       "Group": "General",
       "Value": 42,
-      "GeneratedPropertyName": "definitiveAnswer"
+      "GeneratedPropertyName": "definitiveAnswer",
+      "OptionalValue": true,
+      "ValueType": "Int"
     }
   }
 }

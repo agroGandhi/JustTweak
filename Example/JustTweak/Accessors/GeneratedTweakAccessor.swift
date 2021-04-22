@@ -44,10 +44,11 @@ class GeneratedTweakAccessor {
         return Self.tweakManager
     }
 
-    @TweakProperty(feature: Features.general,
-                   variable: Variables.answerToTheUniverse,
-                   tweakManager: tweakManager)
-    var meaningOfLife: Int
+    @OptionalTweakProperty(fallbackValue: nil,
+                           feature: Features.general,
+                           variable: Variables.answerToTheUniverse,
+                           tweakManager: tweakManager)
+    var meaningOfLife: Int?
 
     @TweakProperty(feature: Features.general,
                    variable: Variables.greetOnAppDidBecomeActive,

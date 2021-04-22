@@ -19,7 +19,7 @@ public protocol TweakProvider {
 }
 
 public protocol MutableTweakProvider: TweakProvider {
-    func set(_ value: TweakValue, feature: String, variable: String)
+    func set(_ value: TweakValue?, feature: String, variable: String)
     func deleteValue(feature: String, variable: String)
 }
 

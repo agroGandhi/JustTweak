@@ -6,7 +6,7 @@
 import Foundation
 
 protocol ExampleProtocol {
-    var meaningOfLife: Int { get }
+    var meaningOfLife: Int? { get }
     var shouldShowAlert: Bool { get }
     var isTapGestureToChangeColorEnabled: Bool { get }
     var canShowGreenView: Bool { get }

@@ -229,11 +229,22 @@ extension TweakAccessorCodeGenerator {
     
     private func tweakProperty(for tweak: Tweak) -> String {
         let propertyName = tweak.propertyName ?? tweak.variable.camelCased()
-        return """
+        switch tweak.optionalValue {
+        case true:
+            return """
+            @OptionalTweakProperty(fallbackValue: nil,
+                                   feature: \(featuresConst).\(tweak.feature.camelCased()),
+                                   variable: \(variablesConst).\(tweak.variable.camelCased()),
+                                   tweakManager: tweakManager)
+            var \(propertyName): \(tweak.valueType)?
+        """
+        case false:
+            return """
             @TweakProperty(feature: \(featuresConst).\(tweak.feature.camelCased()),
                            variable: \(variablesConst).\(tweak.variable.camelCased()),
                            tweakManager: tweakManager)
             var \(propertyName): \(tweak.valueType)
         """
+        }
     }
 }

@@ -33,12 +33,12 @@ internal class BooleanTweakTableViewCell: UITableViewCell, TweakViewControllerCe
         }
     }
     
-    var value: TweakValue {
+    var value: TweakValue? {
         get {
-            return switchControl.isOn
+            switchControl.isOn
         }
         set {
-            switchControl.isOn = newValue.boolValue
+            switchControl.isOn = newValue?.boolValue ?? false
         }
     }
     weak var delegate: TweakViewControllerCellDelegate?

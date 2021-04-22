@@ -71,11 +71,11 @@ class TweakAccessor {
                            tweakManager: tweakManager)
     var labelText: String
     
-    @FallbackTweakProperty(fallbackValue: 42,
+    @OptionalTweakProperty(fallbackValue: 42,
                            feature: Features.uiCustomization,
                            variable: Variables.meaningOfLife,
                            tweakManager: tweakManager)
-    var meaningOfLife: Int
+    var meaningOfLife: Int?
     
     @OptionalTweakProperty(fallbackValue: nil,
                            feature: Features.uiCustomization,

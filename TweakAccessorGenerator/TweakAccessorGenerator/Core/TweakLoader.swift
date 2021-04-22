@@ -17,8 +17,8 @@ class TweakLoader {
         }
         
         let tweaks = try content.map { (featureKey: String, tweaks: [String: [String: Any]]) throws -> [Tweak] in
-            try tweaks.map { (variableKey: String, value: [String: Any]) throws -> Tweak in
-                try tweak(for: value, feature: featureKey, variable: variableKey)
+            try tweaks.map { (variableKey: String, dictionary: [String: Any]) throws -> Tweak in
+                try tweak(for: dictionary, feature: featureKey, variable: variableKey)
             }
             .sorted { $0.variable < $1.variable }
         }
@@ -56,15 +56,28 @@ class TweakLoader {
         guard let group = dictionary["Group"] as? String else {
             throw "Missing 'Group' value in dictionary \(dictionary)"
         }
-        guard let value = dictionary["Value"] else {
-            throw "Missing 'Value' value in dictionary \(dictionary)"
+        let hasOptionalValue = dictionary["OptionalValue"] as? Bool
+        if hasOptionalValue == true {
+            if dictionary["ValueType"] == nil {
+                throw "Missing 'ValueType' value in dictionary \(dictionary) (mandatory if OptionalValue is set to true)"
+            }
         }
+        else {
+            if dictionary["Value"] == nil {
+                throw "Missing 'Value' value in dictionary \(dictionary)"
+            }
+        }
+        let value = dictionary["Value"]!
+        let valueType: String = hasOptionalValue == true ?
+            dictionary["ValueType"] as! String :try type(for: value)
+        
         return Tweak(feature: feature,
                      variable: variable,
                      title: title,
                      description: dictionary["Description"] as? String,
                      group: group,
-                     valueType: try type(for: value),
-                     propertyName: dictionary["GeneratedPropertyName"] as? String)
+                     valueType: valueType,
+                     propertyName: dictionary["GeneratedPropertyName"] as? String,
+                     optionalValue: dictionary["OptionalValue"] as? Bool ?? false)
     }
 }

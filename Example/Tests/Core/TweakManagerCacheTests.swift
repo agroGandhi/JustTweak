@@ -131,7 +131,7 @@ fileprivate class MockTweakProvider: MutableTweakProvider {
         return experimentBackingStore[experiment]
     }
     
-    func set(_ value: TweakValue, feature: String, variable: String) {
+    func set(_ value: TweakValue?, feature: String, variable: String) {
         let tweak = Tweak(feature: feature, variable: variable, value: value)
         if let _ = tweakBackingStore[feature] {
             tweakBackingStore[feature]?[variable] = tweak

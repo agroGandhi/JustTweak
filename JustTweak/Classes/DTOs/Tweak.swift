@@ -10,7 +10,7 @@ public struct Tweak {
     public let feature: String
     public let variable: String
     
-    public let value: TweakValue
+    public let value: TweakValue?
     
     public let title: String?
     public let desc: String?
@@ -34,7 +34,13 @@ public struct Tweak {
         }
     }
     
-    public init(feature: String, variable: String, value: TweakValue, title: String? = nil, description: String? = nil, group: String? = nil, source: String? = nil) {
+    public init(feature: String,
+                variable: String,
+                value: TweakValue?,
+                title: String? = nil,
+                description: String? = nil,
+                group: String? = nil,
+                source: String? = nil) {
         self.feature = feature
         self.variable = variable
         self.value = value
@@ -59,7 +65,6 @@ extension Tweak: Equatable {
     public static func ==(lhs: Self, rhs: Self) -> Bool {
         return lhs.feature == rhs.feature &&
             lhs.variable == rhs.variable &&
-            lhs.value == rhs.value &&
             lhs.title == rhs.title &&
             lhs.desc == rhs.desc &&
             lhs.group == rhs.group &&
@@ -69,23 +74,23 @@ extension Tweak: Equatable {
 
 public extension Tweak {
     
-    var intValue: Int {
-        return value.intValue
+    var intValue: Int? {
+        return value?.intValue
     }
     
-    var floatValue: Float {
-        return value.floatValue
+    var floatValue: Float? {
+        return value?.floatValue
     }
     
-    var doubleValue: Double {
-        return value.doubleValue
+    var doubleValue: Double? {
+        return value?.doubleValue
     }
     
-    var boolValue: Bool {
-        return value.boolValue
+    var boolValue: Bool? {
+        return value?.boolValue
     }
     
     var stringValue: String? {
-        return value.stringValue
+        return value?.stringValue
     }
 }

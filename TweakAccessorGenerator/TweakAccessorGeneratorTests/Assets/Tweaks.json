@@ -37,7 +37,9 @@
       "Description": "Answer to the Ultimate Question of Life, the Universe, and Everything",
       "Group": "General",
       "Value": 42,
-      "GeneratedPropertyName": "definitiveAnswer"
+      "GeneratedPropertyName": "definitiveAnswer",
+      "OptionalValue": true,
+      "ValueType": "Int"
     },
     "greet_on_app_did_become_active": {
       "Title": "Greet on app launch",

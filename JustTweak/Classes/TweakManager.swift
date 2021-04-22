@@ -132,7 +132,7 @@ extension TweakManager: MutableTweakProvider {
         }
     }
     
-    public func set(_ value: TweakValue, feature: String, variable: String) {
+    public func set(_ value: TweakValue?, feature: String, variable: String) {
         guard let mutableTweakProvider = self.mutableTweakProvider else { return }
         if useCache {
             queue.sync {

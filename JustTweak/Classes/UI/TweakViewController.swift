@@ -8,7 +8,7 @@ import UIKit
 internal protocol TweakViewControllerCell: class {
     var title: String? { get set }
     var desc: String? { get set }
-    var value: TweakValue { get set }
+    var value: TweakValue? { get set }
     var delegate: TweakViewControllerCellDelegate? { get set }
 }
 
@@ -28,9 +28,9 @@ public class TweakViewController: UITableViewController {
         var variable: String
         var title: String?
         var desc: String?
-        var value: TweakValue
+        var value: TweakValue?
         
-        init(feature: String, variable: String, value: TweakValue, title: String?, description: String?) {
+        init(feature: String, variable: String, value: TweakValue?, title: String?, description: String?) {
             self.feature = feature
             self.variable = variable
             self.value = value

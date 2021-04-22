@@ -13,6 +13,7 @@ struct Tweak: Equatable {
     let group: String
     let valueType: String
     let propertyName: String?
+    let optionalValue: Bool
 }
 
 struct Configuration: Decodable {

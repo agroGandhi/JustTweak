@@ -36,7 +36,7 @@ extension NSDictionary: TweakProvider {
 
 extension NSMutableDictionary: MutableTweakProvider {
     
-    public func set(_ value: TweakValue, feature: String, variable: String) {
+    public func set(_ value: TweakValue?, feature: String, variable: String) {
         self[variable] = value
     }
     

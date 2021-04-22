@@ -43,7 +43,7 @@ extension UserDefaultsTweakProvider: TweakProvider {
 
 extension UserDefaultsTweakProvider: MutableTweakProvider {
     
-    public func set(_ value: TweakValue, feature: String, variable: String) {
+    public func set(_ value: TweakValue?, feature: String, variable: String) {
         updateUserDefaults(value: value, feature: feature, variable: variable)
     }
 
@@ -68,7 +68,7 @@ extension UserDefaultsTweakProvider {
         return nil
     }
         
-    private func updateUserDefaults(value: TweakValue, feature: String, variable: String) {
+    private func updateUserDefaults(value: TweakValue?, feature: String, variable: String) {
         userDefaults.set(value, forKey: keyForTweakWithIdentifier(variable))
         DispatchQueue.main.async {
             let notificationCenter = NotificationCenter.default

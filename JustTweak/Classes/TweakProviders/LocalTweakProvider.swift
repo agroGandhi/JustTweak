@@ -38,8 +38,8 @@ final public class LocalTweakProvider {
         fileURL = jsonURL
     }
     
-    private func tweakValueFromJSONObject(_ jsonObject: AnyObject?) -> TweakValue {
-        let value: TweakValue
+    private func tweakValueFromJSONObject(_ jsonObject: AnyObject?) -> TweakValue? {
+        let value: TweakValue?
         if let numberValue = jsonObject as? NSNumber {
             value = numberValue.tweakValue
         }
@@ -47,7 +47,7 @@ final public class LocalTweakProvider {
             value = stringValue
         }
         else {
-            value = false
+            value = nil
         }
         return value
     }

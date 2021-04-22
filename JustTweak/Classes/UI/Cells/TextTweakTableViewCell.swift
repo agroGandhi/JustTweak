@@ -33,9 +33,9 @@ class TextTweakTableViewCell: UITableViewCell, TweakViewControllerCell, UITextFi
         }
     }
     
-    var value: TweakValue = "" {
+    var value: TweakValue? = "" {
         didSet {
-            textField.text = value.description
+            textField.text = value?.description ?? ""
             textField.sizeToFit()
             if textField.bounds.width > bounds.width / 2.0 {
                 textField.bounds.size = CGSize(width: bounds.width / 2.0,
